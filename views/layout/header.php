@@ -20,12 +20,17 @@
       </button>
       <a class="navbar-brand" href="/mvc">Brand</a>
     </div>
-
+    <?php Session::init(); ?>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/mvc/user">User <span class="sr-only">(current)</span></a></li>
         <li><a href="/mvc/user/help">Help</a></li>
+        <?php if (Session::get('login_status') == False) :?>
+        <li><a href="/mvc/user/login">login</a></li>
+        <?php else :?>
+        <li><a href="/mvc/user/logout">logout</a></li>
+      <?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
